@@ -100,4 +100,5 @@ class FlatMapTest {
         FlatMap<Integer> flatMap = new FlatMap<>(data);
         assertThat(flatMap.hasNext()).isFalse();
     }
+
 }
