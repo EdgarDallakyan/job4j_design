@@ -66,4 +66,5 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
             this.next = next;
         }
     }
+
 }

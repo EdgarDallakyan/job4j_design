@@ -125,4 +125,5 @@ class SimpleLinkedListTest {
         assertThatThrownBy(list.iterator()::next)
                 .isInstanceOf(NoSuchElementException.class);
     }
+
 }
