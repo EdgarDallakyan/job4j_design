@@ -67,4 +67,5 @@ public class RevertLinked<T> implements Iterable<T> {
             this.next = next;
         }
     }
+
 }
