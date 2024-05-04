@@ -63,23 +63,16 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     }
     @Override
     public boolean remove(K key) {
-        boolean rsl = false;
-        V value = null;
         int index = getIndex(key);
-        if (this.get(key) != null) {
-            if (table[index] != null) {
-                K foundKey = table[index].key;
-                if (isKeyEqual(key, foundKey)) {
-                    value = table[index].value;
-                    table[getIndex(key)] = null;
-                    modCount++;
-                    count--;
-                    rsl = true;
-                }
-            }
+        if (table[index] != null && isKeyEqual(key, table[index].key)) {
+            table[index] = null;
+            modCount++;
+            count--;
+            return true;
         }
-        return rsl;
+        return false;
     }
+
     @Override
     public Iterator<K> iterator() {
         return new Iterator<>() {
