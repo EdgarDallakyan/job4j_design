@@ -63,14 +63,15 @@ public class NonCollisionMap<K, V> implements SimpleMap<K, V> {
     }
     @Override
     public boolean remove(K key) {
+        boolean rsl = false;
         int index = getIndex(key);
         if (table[index] != null && isKeyEqual(key, table[index].key)) {
             table[index] = null;
             modCount++;
             count--;
-            return true;
+            rsl = true;
         }
-        return false;
+        return rsl;
     }
 
     @Override
