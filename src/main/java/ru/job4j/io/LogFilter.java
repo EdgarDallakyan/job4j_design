@@ -37,6 +37,7 @@ public class LogFilter {
         }
     }
 
+
     public static void main(String[] args) {
         LogFilter logFilter = new LogFilter("data/log.txt");
         logFilter.filter().forEach((System.out::println));
