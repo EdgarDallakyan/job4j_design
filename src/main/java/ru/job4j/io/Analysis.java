@@ -2,6 +2,7 @@ package ru.job4j.io;
 
 import java.io.*;
 
+
 public class Analysis {
     public void unavailable(String source, String target) {
         boolean flag = false;
