@@ -19,6 +19,7 @@ public class Search {
         return searcher.getPaths();
     }
 
+
     public static void validateArgs(String[] args) {
         if (args.length != 2) {
             throw new IllegalArgumentException("Wrong number of arguments");
