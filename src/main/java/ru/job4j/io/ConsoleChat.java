@@ -73,4 +73,5 @@ public class ConsoleChat {
         ConsoleChat consoleChat = new ConsoleChat("data/consoleLog.txt", "data/botAnswers.txt");
         consoleChat.run();
     }
+
 }
