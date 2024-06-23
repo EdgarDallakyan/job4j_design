@@ -7,20 +7,18 @@ import java.net.Socket;
 public class EchoServer {
     public static void main(String[] args) throws IOException {
         try (ServerSocket server = new ServerSocket(9000)) {
-            while (true) {
+            while (!server.isClosed()) {
                 Socket socket = server.accept();
-                try (OutputStream out = socket.getOutputStream();
+                try (OutputStream output = socket.getOutputStream();
                      BufferedReader in = new BufferedReader(
                              new InputStreamReader(socket.getInputStream()))) {
-                    out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
+                    output.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
                     String str = in.readLine();
-                    if (str.contains("Bye")) {
+                    System.out.println(str);
+                    if (str.split(" ")[1].contains("msg=Bye")) {
+                        output.write("See you".getBytes());
                         server.close();
                     }
-                    for (str = in.readLine(); str != null && !str.isEmpty(); str = in.readLine()) {
-                        System.out.println(str);
-                    }
-                    out.flush();
                 }
             }
         }
