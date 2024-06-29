@@ -1,8 +1,16 @@
 package ru.job4j.serialization.xml;
 
-public class Number {
-    private final String number;
+import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name = "number")
+public class Number {
+
+    @XmlAttribute
+    private String number;
+
+    public Number() {
+    }
     public Number(String number) {
         this.number = number;
     }
