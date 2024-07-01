@@ -7,6 +7,10 @@ public class Position {
         this.position = position;
     }
 
+    public String isPosition() {
+        return position;
+    }
+
     @Override
     public String toString() {
         return "Position{"
