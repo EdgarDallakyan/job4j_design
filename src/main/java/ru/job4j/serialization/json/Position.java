@@ -17,4 +17,5 @@ public class Position {
                 + "position='" + position + '\''
                 + '}';
     }
+
 }
