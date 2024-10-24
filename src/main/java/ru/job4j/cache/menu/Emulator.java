@@ -1,7 +1,6 @@
 package ru.job4j.cache.menu;
 
 import ru.job4j.cache.DirFileCache;
-
 import java.util.Scanner;
 
 public class Emulator {
@@ -19,7 +18,7 @@ public class Emulator {
             System.out.println("4. Выход");
             System.out.print("Выберите опцию: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
