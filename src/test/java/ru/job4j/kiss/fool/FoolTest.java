@@ -1,46 +1,29 @@
 package ru.job4j.kiss.fool;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class FoolTest {
-    @BeforeEach
-    void setUp() {
+
+    @Test
+    void makeAnswerWhen1() {
+        assertThat(Fool.makeAnswer(1)).isEqualTo(String.valueOf(1));
     }
     @Test
-    void whenAnswerMultiple3() {
-        Integer startAt = 3;
-        String answer = "Fizz";
-        Fool fool = new Fool();
-        assertThat(fool.getStartAt(startAt, answer, "Fizz")).isEqualTo(3);
+    void makeAnswerWhen2() {
+        assertThat(Fool.makeAnswer(2)).isEqualTo(String.valueOf(2));
     }
     @Test
-    void whenAnswerMultiple5() {
-        Integer startAt = 5;
-        String answer = "Buzz";
-        Fool fool = new Fool();
-        assertThat(fool.getStartAt(startAt, answer, "Buzz")).isEqualTo(5);
+    void makeAnswerWhen3() {
+        assertThat(Fool.makeAnswer(3)).isEqualTo("Fizz");
     }
     @Test
-    void whenAnswerMultiple3And5() {
-        Integer startAt = 15;
-        String answer = "FizzBuzz";
-        Fool fool = new Fool();
-        assertThat(fool.getStartAt(startAt, answer, "FizzBuzz")).isEqualTo(15);
+    void makeAnswerWhen5() {
+        assertThat(Fool.makeAnswer(5)).isEqualTo("Buzz");
     }
     @Test
-    void whenOtherAnswer() {
-        Integer startAt = 4;
-        String answer = "4";
-        Fool fool = new Fool();
-        assertThat(fool.getStartAt(startAt, answer, startAt.toString())).isEqualTo(4);
-    }
-    @Test
-    void whenWrongAnswer() {
-        Integer startAt = 4;
-        String answer = "Bizz";
-        Fool fool = new Fool();
-        assertThat(fool.getStartAt(startAt, answer, startAt.toString())).isEqualTo(0);
+    void makeAnswerWhen15() {
+        assertThat(Fool.makeAnswer(15)).isEqualTo("FizzBuzz");
     }
 }

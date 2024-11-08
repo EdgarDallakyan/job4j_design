@@ -1,50 +1,42 @@
 package ru.job4j.kiss.fool;
 
-
 import java.util.Scanner;
 
 public class Fool {
 
     public static void main(String[] args) {
-        Fool fool = new Fool();
         System.out.println("Игра FizzBuzz.");
-        Integer startAt = 1;
+        var startAt = 1;
         var input = new Scanner(System.in);
         while (startAt < 100) {
-            if (startAt % 3 == 0 && startAt % 5 == 0) {
-                System.out.println("FizzBuzz");
-            } else if (startAt % 3 == 0) {
-                System.out.println("Fizz");
-            } else if (startAt % 5 == 0) {
-                System.out.println("Buzz");
-            } else {
-                System.out.println(startAt);
-            }
+            System.out.println(makeAnswer(startAt));
             startAt++;
-            String answer = input.nextLine();
-
-            if (startAt % 3 == 0 && startAt % 5 == 0) {
-                startAt = fool.getStartAt(startAt, answer, "FizzBuzz");
-            } else if (startAt % 3 == 0) {
-                startAt = fool.getStartAt(startAt, answer, "Fizz");
-            } else if (startAt % 5 == 0) {
-                startAt = fool.getStartAt(startAt, answer, "Buzz");
-            } else {
-                startAt = fool.getStartAt(startAt, answer, String.valueOf(startAt));
+            if (checkAnswer(input.nextLine(), startAt)) {
+                startAt = 0;
             }
             startAt++;
         }
     }
 
-    public int getStartAt(int startAt, String answer, String word) {
-        if (!word.equals(answer)) {
-            System.out.println("Ошибка. Начинай снова.");
-            startAt = 0;
+    public static String makeAnswer(int number) {
+        String result;
+        if (number % 3 == 0 && number % 5 == 0) {
+            result = "FizzBuzz";
+        } else if (number % 3 == 0) {
+            result = "Fizz";
+        } else if (number % 5 == 0) {
+            result = "Buzz";
         } else {
-            if (startAt % 2 != 0) {
-                System.out.println(answer);
-            }
+            result = String.valueOf(number);
         }
-        return startAt;
+        return result;
+    }
+    public static boolean checkAnswer(String answer, int number) {
+        boolean result = false;
+        if (!makeAnswer(number).equals(answer)) {
+            System.out.println("Ошибка. Начинай снова.");
+            result = true;
+        }
+        return result;
     }
 }
