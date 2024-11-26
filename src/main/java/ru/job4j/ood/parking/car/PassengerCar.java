@@ -8,3 +8,4 @@ public class PassengerCar extends Car {
         super(SIZE, name);
     }
 }
+/*класс наследует модель данных Car*/

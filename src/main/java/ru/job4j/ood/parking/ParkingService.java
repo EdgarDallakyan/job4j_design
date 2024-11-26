@@ -15,3 +15,4 @@ public class ParkingService {
         parking.add(car);
     }
 }
+/*класс имеет связь в виде агрегации с интерфейсом Park*/
