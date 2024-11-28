@@ -10,6 +10,8 @@ public interface Store {
 
     boolean delete(Food food);
 
+    void deleteAll();
+
     List<Food> findAll();
 
     Food findByName(String name);

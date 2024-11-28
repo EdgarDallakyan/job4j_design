@@ -5,6 +5,7 @@ import ru.job4j.ood.storage.food.Food;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public abstract class AbstractStore implements Store {
@@ -39,5 +40,14 @@ public abstract class AbstractStore implements Store {
             }
         }
         return res;
+    }
+
+    @Override
+    public void deleteAll() {
+        Iterator<Food> iterator = store.iterator();
+        while (iterator.hasNext()) {
+            iterator.next();
+            iterator.remove();
+        }
     }
 }

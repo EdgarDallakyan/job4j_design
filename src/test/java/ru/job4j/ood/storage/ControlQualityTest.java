@@ -60,4 +60,50 @@ class ControlQualityTest {
         assertThat(whiteBread).isEqualTo(storeShop.findByName("whiteBread"));
         assertThat(meat).isEqualTo(storeTrash.findByName("Meat"));
     }
+
+    @Test
+    void whenUseResort() {
+        Store storeWare = new Warehouse();
+        Store storeShop = new Shop();
+        Store storeTrash = new Trash();
+        Food milk = new Milk(
+                "Milk",
+                LocalDate.of(2024, 12, 1),
+                LocalDate.of(2024, 11, 28),
+                500.0);
+        Food meat = new Meat(
+                "Meat",
+                LocalDate.of(2024, 11, 26),
+                LocalDate.of(2024, 11, 21),
+                1000.0);
+        Food blackBread = new Bread(
+                "blackBread",
+                LocalDate.of(2024, 11, 30),
+                LocalDate.of(2024, 11, 26),
+                100.0);
+        Food whiteBread = new Bread(
+                "whiteBread",
+                LocalDate.of(2024, 12, 4),
+                LocalDate.of(2024, 11, 30),
+                100.0);
+        List<Store> stores = new ArrayList<>();
+        stores.add(storeWare);
+        stores.add(storeShop);
+        stores.add(storeTrash);
+        List<Food> foods = new ArrayList<>();
+        foods.add(milk);
+        foods.add(meat);
+        foods.add(blackBread);
+        foods.add(whiteBread);
+        ControlQuality controlQuality = new ControlQuality();
+        String dateToday = "2024-11-28";
+        controlQuality.addForStores(foods, stores, dateToday);
+        String newDateToday = "2024-11-29";
+        controlQuality.resortForStores(stores, newDateToday);
+        assertThat(milk).isEqualTo(storeShop.findByName("Milk"));
+        assertThat(blackBread).isEqualTo(storeShop.findByName("blackBread"));
+        assertThat(0.2).isEqualTo(storeShop.findByName("blackBread").getDiscount());
+        assertThat(whiteBread).isEqualTo(storeWare.findByName("whiteBread"));
+        assertThat(meat).isEqualTo(storeTrash.findByName("Meat"));
+    }
 }
