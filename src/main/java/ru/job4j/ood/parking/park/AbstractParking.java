@@ -123,5 +123,6 @@ public abstract class AbstractParking implements Park {
     protected List<Car> findAllFromParkingForCargo() {
         return List.copyOf(parkingForCargo);
     }
+
 }
 /*класс реализует методы интерфейса Park*/

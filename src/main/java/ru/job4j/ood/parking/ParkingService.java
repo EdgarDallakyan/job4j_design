@@ -14,5 +14,6 @@ public class ParkingService {
     public void addCar(Car car, Park parking) {
         parking.add(car);
     }
+
 }
 /*класс имеет связь в виде агрегации с интерфейсом Park*/

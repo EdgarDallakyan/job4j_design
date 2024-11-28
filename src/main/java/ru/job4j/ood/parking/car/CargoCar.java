@@ -14,5 +14,6 @@ public class CargoCar extends Car {
         }
         return size;
     }
+
 }
 /*класс наследует модель данных Car*/

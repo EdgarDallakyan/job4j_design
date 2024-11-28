@@ -24,5 +24,6 @@ public abstract class Car {
                 + "size = " + size
                 + '}';
     }
+
 }
 /*модель данных*/
