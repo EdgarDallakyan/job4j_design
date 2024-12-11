@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 class IntervalMerge {
     public int[][] merge(int[][] intervals) {
         if (intervals.length == 0) {
