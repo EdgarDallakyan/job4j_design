@@ -3,31 +3,36 @@ package ru.job4j.collection;
 import java.util.NoSuchElementException;
 
 public class SimpleQueue<T> {
-    private final SimpleStack<T> input = new SimpleStack<>();
-    private final SimpleStack<T> output = new SimpleStack<>();
-
-    private int inSize;
-    private int outSize;
+    private final SimpleStack<T> in = new SimpleStack<>();
+    private final SimpleStack<T> out = new SimpleStack<>();
+    private int sizeIn;
+    private int sizeOut;
 
     public T poll() {
-        if (inSize == 0 && outSize == 0) {
+        if (sizeOut == 0 && sizeIn == 0) {
             throw new NoSuchElementException("Queue is empty");
         }
-        for (int i = 0; i < inSize; i++) {
-            if (outSize != 0) {
-                input.push(output.pop());
+        if (sizeOut == 0) {
+            while (sizeIn > 0) {
+                out.push(in.pop());
+                sizeIn--;
+                sizeOut++;
             }
-            output.push(input.pop());
         }
-        outSize = inSize;
-        inSize = 0;
-        outSize--;
-        return output.pop();
+        sizeOut--;
+        return out.pop();
     }
 
-
     public void push(T value) {
-        input.push(value);
-        inSize++;
+        in.push(value);
+        sizeIn++;
+    }
+
+    public int size() {
+        return sizeIn + sizeOut;
+    }
+
+    public boolean isEmpty() {
+        return size() == 0;
     }
 }
